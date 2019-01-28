@@ -1,0 +1,19 @@
+import numpy as np
+flist = []
+flist1 = []
+
+f= open("Magnetometer\MAG.txt","r")
+for i in range (0 , 77090):
+    if f.mode == "r":
+        content = f.readline()
+        flist = flist + [content]
+for i in range (len(flist)):
+    if i % 50 == 0:
+        flist1 = flist1 + [flist[i]]
+a = np. array(flist1)
+
+flist2 =a.T
+text_file = open("Output.csv", "w")
+for i in range (0 , 77090):
+    text_file.write("%s" % flist2)
+text_file.close()
