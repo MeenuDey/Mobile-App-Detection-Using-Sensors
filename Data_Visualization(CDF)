@@ -1,0 +1,57 @@
+import numpy as np
+from statsmodels.distributions.empirical_distribution import ECDF
+import matplotlib.pyplot as plt
+
+//Importing all Sensor Data
+data1 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/facebook.txt")
+data2 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/game.txt")
+data3 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/googleCrome.txt")
+data4 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/MsOffice.txt")
+data5 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/offlineSong.txt")
+data6 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/onlineSong.txt")
+data7 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/VLC.txt")
+data8 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/VMware.txt")
+data9 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/whatsapp.txt")
+data10 = np.loadtxt("IIIT BBSR/LappyExperiment/HostelRoom/Youtube.txt")
+
+F1 = ECDF(data1)
+F2 = ECDF(data2)
+F3 = ECDF(data3)
+F4 = ECDF(data4)
+F5 = ECDF(data5)
+F6 = ECDF(data6)
+F7 = ECDF(data7)
+F8 = ECDF(data8)
+F9 = ECDF(data9)
+F10 = ECDF(data10)
+
+max = max(max(data1), max(data2),max(data3),max(data4),max(data5),max(data6),max(data7),max(data8),max(data9),max(data10))
+X = np.arange(1,max+1)
+
+plot_data_1 = F1(X)
+plot_data_2 = F2(X)
+plot_data_3 = F3(X)
+plot_data_4 = F4(X)
+plot_data_5 = F5(X)
+plot_data_6 = F6(X)
+plot_data_7 = F7(X)
+plot_data_8 = F8(X)
+plot_data_9 = F9(X)
+plot_data_10 = F10(X)
+
+
+plt.plot(plot_data_1, label="Facebook")
+plt.plot(plot_data_2, label="Game")
+plt.plot(plot_data_3, label="GoogleCrome")
+plt.plot(plot_data_4, label="MsOffice")
+plt.plot(plot_data_5, label="OfflineSong")
+plt.plot(plot_data_6, label="OnlineSong")
+plt.plot(plot_data_7, label="VLC")
+plt.plot(plot_data_8, label="VMware")
+plt.plot(plot_data_9, label="Whatsapp")
+plt.plot(plot_data_10, label="Youtube")
+plt.xlim(177,184)
+plt.legend(loc='lower right' , fontsize = 11)
+plt.xlabel('Hall Voltage (mV)' , fontsize = 13)
+plt.ylabel('CDF' , fontsize = 13)
+plt.show()
